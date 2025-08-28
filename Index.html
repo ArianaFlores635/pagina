@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages y Visual Studio Code</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #ff80ab, #ba68c8);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #fff; }
+        header {
+            padding: 100px 20px 40px;
+            text-align: center;
+            animation: fadeInDown 1s ease-in-out;
+        }
+        header img {
+            width: 80px;
+            margin: 10px;
+        }
+        header h1 {
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        header p { font-size: 1.2rem; margin-top: 10px; }
+        .autores {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffe57f;
+            animation: flotar 3s ease-in-out infinite;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        main { max-width: 1000px; margin: auto; padding: 20px; }
+        section {
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        section.show { opacity: 1; transform: translateY(0); }
+        h2 { color: #ffeb3b; margin-bottom: 10px; }
+        h3 { margin-top: 15px; color: #ffe57f; }
+        ul { list-style: none; }
+        ul li::before { content: "✔ "; color: #ffeb3b; }
+        .imagen { text-align: center; margin: 15px 0; }
+        .imagen img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+        }
+        .curiosidades {
+            background: rgba(255,255,255,0.15);
+            border-left: 5px solid #ffeb3b;
+            padding: 10px;
+            font-style: italic;
+        }
+        footer {
+            background: rgba(0,0,0,0.3);
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Línea de tiempo */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #ffe57f;
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+        }
+        .timeline-item h4 {
+            margin-bottom: 5px;
+            color: #ffe57f;
+        }
+        /* Tarjetas interactivas */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .card {
+            background: rgba(255,255,255,0.15);
+            flex: 1 1 calc(50% - 15px);
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.4s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.25);
+        }
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 10px;
+        }
+        .faq-item button {
+            width: 100%;
+            padding: 10px;
+            background: #ff80ab;
+            color: white;
+            font-weight: bold;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .faq-item div {
+            display: none;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0 0 5px 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#historia">Historia</a>
+        <a href="#github">GitHub Pages</a>
+        <a href="#vscode">Visual Studio Code</a>
+        <a href="#pasos">Cómo Usarlos</a>
+        <a href="#ventajas">Ventajas y Desventajas</a>
+        <a href="#curiosidades">Curiosidades</a>
+        <a href="#faq">Preguntas Frecuentes</a>
+    </nav>
+
+    <header>
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo GitHub">
+        <img src="https://code.visualstudio.com/assets/images/code-stable.png" alt="Logo VS Code">
+        <h1>GitHub Pages & Visual Studio Code</h1>
+        <p>La combinación perfecta para crear y publicar tu propia página web gratis</p>
+        <div class="autores">
+            Presentado por los alumnos: Lideny Flores • Caren Rodriguez • Mauricio Maradiaga
+        </div>
+    </header>
+
+    <main>
+        <section id="historia">
+            <h2>Historia y Evolución</h2>
+            <p>GitHub fue fundado en 2008 y rápidamente se convirtió en la plataforma más popular para la colaboración de código. Ese mismo año nació GitHub Pages, con el objetivo de permitir que los desarrolladores pudieran publicar fácilmente sus sitios web estáticos directamente desde un repositorio.</p>
+            <p>Visual Studio Code, por su parte, fue lanzado en 2015 por Microsoft. Destacó por ser gratuito, ligero, multiplataforma y por ofrecer un amplio ecosistema de extensiones que lo hacen personalizable para cualquier lenguaje de programación.</p>
+        </section>
+
+        <section id="github">
+            <h2>¿Qué es GitHub Pages?</h2>
+            <p>GitHub Pages es un servicio gratuito que permite alojar sitios web directamente desde un repositorio en GitHub. Es perfecto para páginas personales, portafolios, blogs, documentación y proyectos académicos.</p>
+            <div class="imagen">
+                <img src="https://miro.medium.com/v2/resize:fit:1200/1*O0G5v1Y1qN4E4n3nWRcA1A.png" alt="Ejemplo GitHub Pages">
+            </div>
+        </section>
+
+        <section id="vscode">
+            <h2>¿Qué es Visual Studio Code?</h2>
+            <p>Visual Studio Code (VS Code) es un editor de código desarrollado por Microsoft. Su diseño ligero y veloz, sumado a sus potentes funciones como depuración integrada, control de versiones y extensiones, lo han convertido en una herramienta esencial para desarrolladores de todos los niveles.</p>
+            <div class="imagen">
+                <img src="https://code.visualstudio.com/assets/home/home-screenshot-mac-2x.png" alt="Ejemplo VS Code">
+            </div>
+        </section>
+
+        <section id="pasos">
+            <h2>Cómo Usarlos Juntos - Línea de Tiempo</h2>
+            <div class="timeline">
+                <div class="timeline-item"><h4>Paso 1</h4><p>Diseñar tu página en VS Code.</p></div>
+                <div class="timeline-item"><h4>Paso 2</h4><p>Guardar los archivos en una carpeta organizada.</p></div>
+                <div class="timeline-item"><h4>Paso 3</h4><p>Subir la carpeta a un repositorio de GitHub.</p></div>
+                <div class="timeline-item"><h4>Paso 4</h4><p>Activar GitHub Pages en la configuración.</p></div>
+                <div class="timeline-item"><h4>Paso 5</h4><p>Compartir el enlace con todos.</p></div>
+            </div>
+        </section>
+
+        <section id="ventajas">
+            <h2>Ventajas y Desventajas</h2>
+            <div class="cards">
+                <div class="card"><h3>Ventajas de GitHub</h3><ul><li>Gratis</li><li>Trabajo colaborativo</li><li>Control de versiones</li></ul></div>
+                <div class="card"><h3>Desventajas de GitHub</h3><ul><li>Requiere internet</li><li>Curva de aprendizaje</li></ul></div>
+                <div class="card"><h3>Ventajas de VS Code</h3><ul><li>Gratis</li><li>Extensible</li><li>Multiplataforma</li></ul></div>
+                <div class="card"><h3>Desventajas de VS Code</h3><ul><li>Pierde rendimiento con muchas extensiones</li><li>No incluye compilador para todo</li></ul></div>
+            </div>
+        </section>
+
+        <section id="curiosidades" class="curiosidades">
+            <h2>💡 Curiosidades</h2>
+            <p>GitHub Pages permite integrar dominios personalizados.</p>
+            <p>VS Code incluye un depurador integrado.</p>
+            <p>El logotipo de GitHub es el famoso "Octocat".</p>
+        </section>
+
+        <section id="faq">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-item"><button>¿Necesito saber programar?</button><div>No es obligatorio, pero tener conocimientos básicos ayuda a crear mejores proyectos.</div></div>
+            <div class="faq-item"><button>¿VS Code es gratis?</button><div>Sí, completamente gratuito y multiplataforma.</div></div>
+            <div class="faq-item"><button>¿Puedo usar GitHub Pages con cualquier proyecto?</button><div>Sí, siempre que sea un sitio web estático.</div></div>
+        </section>
+
+        <section>
+            <h2>Frase Final</h2>
+            <p><em>"Aprender estas herramientas es dar el primer paso para abrir las puertas del mundo digital."</em></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>"❤️Un proyecto hecho con esfuerzo y amistad❤️"— 2025</p>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            sections.forEach(sec => {
+                const secTop = sec.getBoundingClientRect().top;
+                if (secTop < window.innerHeight - 100) {
+                    sec.classList.add('show');
+                }
+            });
+        });
+        document.querySelectorAll('.faq-item button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const div = btn.nextElementSibling;
+                div.style.display = div.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function lanzarConfeti() {
+            const end = Date.now() + 3 * 1000;
+            const colores = ['#ff80ab', '#ba68c8'];
+            (function frame() {
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: colores });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: colores });
+                if (Date.now() < end) requestAnimationFrame(frame);
+            }());
+        }
+        window.onload = lanzarConfeti;
+    </script>
+</body>
+</html>
